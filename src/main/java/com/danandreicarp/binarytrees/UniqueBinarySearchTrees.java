@@ -1,4 +1,4 @@
-package com.danandreicarp;
+package com.danandreicarp.binarytrees;
 
 import java.util.HashMap;
 import java.util.Map;

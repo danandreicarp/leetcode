@@ -1,4 +1,4 @@
-package com.danandreicarp;
+package com.danandreicarp.binarytrees;
 
 public class ValidateBinarySearchTree {
 
@@ -158,22 +158,4 @@ public class ValidateBinarySearchTree {
         System.out.println(app.isValidBST(root));
     }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 }
