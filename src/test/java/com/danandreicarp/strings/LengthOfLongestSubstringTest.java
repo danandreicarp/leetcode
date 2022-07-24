@@ -27,4 +27,9 @@ class LengthOfLongestSubstringTest {
     void testCase4() {
         assertEquals(5, app.lengthOfLongestSubstring("abcbcaddaecb"));
     }
+
+    @Test
+    void testCase5() {
+        assertEquals(4, app.lengthOfLongestSubstring("gaaqfeqlqky"));
+    }
 }

@@ -8,44 +8,43 @@ public class LengthOfLongestSubstring {
         if (s.length() == 1) return 1;
 
         int maxLength = 0;
-        Map<Character, Integer> substringCharIndices = new HashMap<>();
-        List<Character> substringChars = new ArrayList<>();
+        Set<Character> characterSet = new HashSet<>();
+        LinkedList<Character> substring = new LinkedList<>();
         char[] chars = s.toCharArray();
         for (char currentChar : chars) {
-            if (substringCharIndices.containsKey(currentChar)) {
-                maxLength = updateMaxLength(maxLength, substringCharIndices);
-                substringChars = resetSubstring(substringCharIndices, substringChars, currentChar);
+            if (characterSet.contains(currentChar)) {
+                maxLength = updateMaxLength(maxLength, characterSet);
+                resetSubstring(characterSet, substring, currentChar);
             } else {
-                substringChars.add(currentChar);
-                substringCharIndices.put(currentChar, substringChars.size() - 1);
+                substring.add(currentChar);
+                characterSet.add(currentChar);
             }
         }
-        maxLength = updateMaxLength(maxLength, substringCharIndices);
+        maxLength = updateMaxLength(maxLength, characterSet);
         return maxLength;
     }
 
-    private int updateMaxLength(int maxLength, Map<Character, Integer> substring) {
+    private int updateMaxLength(int maxLength, Set<Character> substring) {
         if (maxLength < substring.size()) {
             maxLength = substring.size();
         }
         return maxLength;
     }
 
-    private ArrayList<Character> resetSubstring(Map<Character, Integer> substringCharIndices,
-                                                List<Character> substringChars,
-                                                char currentChar) {
-        int index = substringCharIndices.get(currentChar);
-        // skip current character
-        index++;
-        for (int i = 0; i < index; i++) {
-            substringCharIndices.remove(substringChars.get(i));
+    private void resetSubstring(Set<Character> characterSet,
+                                LinkedList<Character> substring,
+                                char currentChar) {
+
+        //remove characters before the duplicate
+        while (substring.peek() != currentChar) {
+            Character ch = substring.poll();
+            characterSet.remove(ch);
         }
+        Character ch = substring.poll();
+        characterSet.remove(ch);
+
         // add current character to new substring
-        substringChars.add(currentChar);
-        for (int i = index; i < substringChars.size(); i++) {
-            char ch = substringChars.get(i);
-            substringCharIndices.put(ch, i - index);
-        }
-        return new ArrayList<>(substringChars.subList(index, substringChars.size()));
+        substring.addLast(currentChar);
+        characterSet.add(currentChar);
     }
 }
