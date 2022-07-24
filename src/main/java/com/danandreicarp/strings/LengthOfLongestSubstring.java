@@ -9,42 +9,15 @@ public class LengthOfLongestSubstring {
 
         int maxLength = 0;
         Set<Character> characterSet = new HashSet<>();
-        LinkedList<Character> substring = new LinkedList<>();
-        char[] chars = s.toCharArray();
-        for (char currentChar : chars) {
-            if (characterSet.contains(currentChar)) {
-                maxLength = updateMaxLength(maxLength, characterSet);
-                resetSubstring(characterSet, substring, currentChar);
-            } else {
-                substring.add(currentChar);
-                characterSet.add(currentChar);
+        for (int i = 0, j = 0; j < s.length(); j++) {
+            char currentChar = s.charAt(j);
+
+            while (characterSet.contains(currentChar)) {
+                characterSet.remove(s.charAt(i++));
             }
-        }
-        maxLength = updateMaxLength(maxLength, characterSet);
-        return maxLength;
-    }
-
-    private int updateMaxLength(int maxLength, Set<Character> substring) {
-        if (maxLength < substring.size()) {
-            maxLength = substring.size();
+            characterSet.add(currentChar);
+            maxLength = Math.max(maxLength, characterSet.size());
         }
         return maxLength;
-    }
-
-    private void resetSubstring(Set<Character> characterSet,
-                                LinkedList<Character> substring,
-                                char currentChar) {
-
-        //remove characters before the duplicate
-        while (substring.peek() != currentChar) {
-            Character ch = substring.poll();
-            characterSet.remove(ch);
-        }
-        Character ch = substring.poll();
-        characterSet.remove(ch);
-
-        // add current character to new substring
-        substring.addLast(currentChar);
-        characterSet.add(currentChar);
     }
 }
