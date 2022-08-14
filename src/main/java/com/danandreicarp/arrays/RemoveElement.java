@@ -6,14 +6,12 @@ public class RemoveElement {
         int j = nums.length - 1;
 
         while (i <= j) {
-            while (nums[i] == val) {
-                while (nums[j] == val && j > i) {
-                    --j;
-                }
-                if (j > i) nums[i++] = nums[j--];
-                else return i;
+            if (nums[i] == val) {
+                if (nums[j] == val) --j;
+                else nums[i] = nums[j--];
+            } else {
+                i++;
             }
-            if (j >= i) i++;
         }
 
         return i;
