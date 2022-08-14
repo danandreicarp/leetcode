@@ -7,21 +7,16 @@ public class FizzBuzz {
 
     public List<String> fizzBuzz(int n) {
         List<String> output = new ArrayList<>(n);
-
         for (int i = 1; i <= n; i++) {
-            StringBuilder result = new StringBuilder();
-            if (i % 3 == 0) {
-                result.append("Fizz");
-            }
-            if (i % 5 == 0) {
-                result.append("Buzz");
-            }
-            if (result.length() == 0) {
-                result.append(i);
-            }
-            output.add(result.toString());
+            output.add(getElement(i));
         }
         return output;
     }
-}
 
+    private String getElement(int i) {
+        if (i % 15 == 0) return "FizzBuzz";
+        if (i % 5 == 0) return "Buzz";
+        if (i % 3 == 0) return "Fizz";
+        return String.valueOf(i);
+    }
+}
