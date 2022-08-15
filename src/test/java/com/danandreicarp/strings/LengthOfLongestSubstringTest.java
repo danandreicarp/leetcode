@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LengthOfLongestSubstringTest {
 
-    private LengthOfLongestSubstring app = new LengthOfLongestSubstring();
+    private final LengthOfLongestSubstring app = new LengthOfLongestSubstring();
 
     @Test
     void testCase1() {

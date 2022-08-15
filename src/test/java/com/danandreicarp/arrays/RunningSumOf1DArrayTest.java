@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RunningSumOf1DArrayTest {
 
-    RunningSumOf1DArray app = new RunningSumOf1DArray();
+    private final RunningSumOf1DArray app = new RunningSumOf1DArray();
 
     @Test
     void testCase1() {

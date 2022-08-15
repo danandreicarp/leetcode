@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryTreeInorderTraversalTest {
 
-    private BinaryTreeInorderTraversal app = new BinaryTreeInorderTraversal();
+    private final BinaryTreeInorderTraversal app = new BinaryTreeInorderTraversal();
 
     @Test
     void testInorderRecNull() {

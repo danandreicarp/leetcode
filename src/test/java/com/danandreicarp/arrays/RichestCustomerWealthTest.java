@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RichestCustomerWealthTest {
 
-    RichestCustomerWealth app = new RichestCustomerWealth();
+    private final RichestCustomerWealth app = new RichestCustomerWealth();
 
     @Test
     void testCase1() {
