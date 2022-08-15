@@ -12,5 +12,16 @@ public class FindNumbersWithEvenNumberOfDigits {
             if (num < 1_000_000) ++count;
         }
         return count;
+//        return findNumbersString(nums);
+    }
+
+    private int findNumbersString(int[] nums) {
+        int count = 0;
+        for (int num : nums) {
+            if (String.valueOf(num).length() % 2 == 0) {
+                ++count;
+            }
+        }
+        return count;
     }
 }
